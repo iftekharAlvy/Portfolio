@@ -1,0 +1,13 @@
+nohup: ignoring input
+10.177.183.1 - - [16/Jul/2025 04:10:54] "GET / HTTP/1.1" 200 -
+10.177.183.1 - - [16/Jul/2025 04:10:54] "GET /assets/index-XgdIk596.js HTTP/1.1" 200 -
+10.177.183.1 - - [16/Jul/2025 04:10:54] "GET /assets/index-CafTpCWW.css HTTP/1.1" 200 -
+10.177.183.1 - - [16/Jul/2025 04:10:54] "GET /assets/profile_pic_1-DB-DAR48.jpg HTTP/1.1" 200 -
+10.177.183.1 - - [16/Jul/2025 04:11:03] "HEAD / HTTP/1.1" 200 -
+10.177.183.1 - - [16/Jul/2025 04:11:03] "GET / HTTP/1.1" 200 -
+10.177.183.1 - - [16/Jul/2025 04:11:07] "GET / HTTP/1.1" 200 -
+10.177.183.1 - - [16/Jul/2025 04:11:07] "GET /assets/index-XgdIk596.js HTTP/1.1" 200 -
+10.177.183.1 - - [16/Jul/2025 04:11:07] "GET /assets/index-CafTpCWW.css HTTP/1.1" 200 -
+10.177.183.1 - - [16/Jul/2025 04:11:10] "GET /assets/profile_pic_1-DB-DAR48.jpg HTTP/1.1" 200 -
+f.socket.bind(self.server_address)
+OSError: [Errno 98] Address already in use

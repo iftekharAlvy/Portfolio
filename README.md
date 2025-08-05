@@ -3,6 +3,7 @@
 > A full-featured video streaming platform built with Next.js, Bunny Stream, and PostgreSQL.  
 > StreamSphere allows creators to upload, manage, and deliver high-quality video content with a modern, responsive UI.
 
+
 ---
 
 ## 📌 Table of Contents

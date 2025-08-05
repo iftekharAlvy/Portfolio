@@ -1,86 +1,109 @@
-import React, { useState } from 'react'
-import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Send, CheckCircle, Facebook, MessageCircle } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-import { Alert, AlertDescription } from '@/components/ui/alert'
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  CheckCircle,
+  Facebook,
+  MessageCircle,
+} from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
-    message: ''
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState(null)
+    message: '',
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
 
   const handleInputChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    setSubmitStatus(null)
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
 
-    // Simulate form submission (replace with actual form handling)
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000))
-      setSubmitStatus('success')
-      setFormData({ name: '', email: '', subject: '', message: '' })
+      const res = await fetch('https://formsubmit.co/iftekharm802@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          _captcha: false,
+        }),
+      });
+
+      if (res.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+      }
     } catch (error) {
-      setSubmitStatus('error')
+      console.error(error);
+      setSubmitStatus('error');
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   const contactInfo = [
     {
       icon: <Mail className="w-6 h-6" />,
-      title: "Email",
-      value: "iftekharm802@gmail.com",
-      link: "mailto:iftekharm802@gmail.com"
+      title: 'Email',
+      value: 'iftekharm802@gmail.com',
+      link: 'mailto:iftekharm802@gmail.com',
     },
     {
       icon: <Phone className="w-6 h-6" />,
-      title: "Phone",
-      value: "+880 1982780739",
-      link: "tel:+8801982780739"
+      title: 'Phone',
+      value: '+880 1982780739',
+      link: 'tel:+8801982780739',
     },
     {
       icon: <MapPin className="w-6 h-6" />,
-      title: "Location",
-      value: "Dhaka, Bangladesh",
-      link: null
-    }
-  ]
+      title: 'Location',
+      value: 'Dhaka, Bangladesh',
+      link: null,
+    },
+  ];
 
   const socialLinks = [
     {
       icon: <Facebook className="w-6 h-6" />,
-      name: "Facebook",
-      url: "https://www.facebook.com/iftekhar.alvy",
-      color: "hover:text-blue-600"
+      name: 'Facebook',
+      url: 'https://www.facebook.com/iftekhar.alvy',
+      color: 'hover:text-blue-600',
     },
     {
       icon: <MessageCircle className="w-6 h-6" />,
-      name: "WhatsApp",
-      url: "https://wa.me/8801982780739",
-      color: "hover:text-green-500"
+      name: 'WhatsApp',
+      url: 'https://wa.me/8801982780739',
+      color: 'hover:text-green-500',
     },
     {
       icon: <Mail className="w-6 h-6" />,
-      name: "Portfolio",
-      url: "https://qbexel.com",
-      color: "hover:text-primary"
-    }
-  ]
+      name: 'Portfolio',
+      url: 'https://qbexel.com',
+      color: 'hover:text-primary',
+    },
+  ];
 
   return (
     <section id="contact" className="py-20 px-4">
@@ -92,9 +115,12 @@ const ContactSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">Get In Touch</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">
+            Get In Touch
+          </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ready to collaborate on your next AI/ML project or discuss business opportunities? Let's connect!
+            Ready to collaborate on your next AI/ML project or discuss business
+            opportunities? Let's connect!
           </p>
         </motion.div>
 
@@ -108,8 +134,10 @@ const ContactSection = () => {
             className="space-y-8"
           >
             <div className="glass-effect rounded-2xl p-8">
-              <h3 className="text-2xl font-bold mb-6 text-primary">Contact Information</h3>
-              
+              <h3 className="text-2xl font-bold mb-6 text-primary">
+                Contact Information
+              </h3>
+
               <div className="space-y-6">
                 {contactInfo.map((info, index) => (
                   <motion.div
@@ -120,9 +148,7 @@ const ContactSection = () => {
                     viewport={{ once: true }}
                     className="flex items-center space-x-4"
                   >
-                    <div className="text-primary">
-                      {info.icon}
-                    </div>
+                    <div className="text-primary">{info.icon}</div>
                     <div>
                       <h4 className="font-semibold">{info.title}</h4>
                       {info.link ? (
@@ -142,8 +168,10 @@ const ContactSection = () => {
             </div>
 
             <div className="glass-effect rounded-2xl p-8">
-              <h3 className="text-2xl font-bold mb-6 text-primary">Connect With Me</h3>
-              
+              <h3 className="text-2xl font-bold mb-6 text-primary">
+                Connect With Me
+              </h3>
+
               <div className="flex space-x-6">
                 {socialLinks.map((social, index) => (
                   <motion.a
@@ -162,7 +190,9 @@ const ContactSection = () => {
             </div>
 
             <div className="glass-effect rounded-2xl p-8">
-              <h3 className="text-2xl font-bold mb-4 text-primary">Availability</h3>
+              <h3 className="text-2xl font-bold mb-4 text-primary">
+                Availability
+              </h3>
               <div className="space-y-2 text-muted-foreground">
                 <p>🚀 Open for new investment opportunities for my ventures</p>
               </div>
@@ -177,12 +207,17 @@ const ContactSection = () => {
             viewport={{ once: true }}
           >
             <div className="glass-effect rounded-2xl p-8">
-              <h3 className="text-2xl font-bold mb-6 text-primary">Send a Message</h3>
-              
+              <h3 className="text-2xl font-bold mb-6 text-primary">
+                Send a Message
+              </h3>
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium mb-2">
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium mb-2"
+                    >
                       Name *
                     </label>
                     <Input
@@ -197,7 +232,10 @@ const ContactSection = () => {
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-2">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium mb-2"
+                    >
                       Email *
                     </label>
                     <Input
@@ -214,7 +252,10 @@ const ContactSection = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium mb-2">
+                  <label
+                    htmlFor="subject"
+                    className="block text-sm font-medium mb-2"
+                  >
                     Subject *
                   </label>
                   <Input
@@ -230,7 +271,10 @@ const ContactSection = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium mb-2">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium mb-2"
+                  >
                     Message *
                   </label>
                   <Textarea
@@ -257,7 +301,8 @@ const ContactSection = () => {
                 {submitStatus === 'error' && (
                   <Alert variant="destructive">
                     <AlertDescription>
-                      Sorry, there was an error sending your message. Please try again or contact me directly.
+                      Sorry, there was an error sending your message. Please try
+                      again or contact me directly.
                     </AlertDescription>
                   </Alert>
                 )}
@@ -285,8 +330,7 @@ const ContactSection = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default ContactSection
-
+export default ContactSection;

@@ -88,7 +88,7 @@ const ContactSection = () => {
     {
       icon: <Facebook className="w-6 h-6" />,
       name: 'Facebook',
-      url: 'https://www.facebook.com/iftekhar.alvy',
+      url: 'https://www.facebook.com/alvy.mahmud',
       color: 'hover:text-blue-600',
     },
     {
@@ -99,8 +99,8 @@ const ContactSection = () => {
     },
     {
       icon: <Mail className="w-6 h-6" />,
-      name: 'Portfolio',
-      url: 'https://qbexel.com',
+      name: 'Email',
+      url: 'mailto:iftekharm802@gmail.com',
       color: 'hover:text-primary',
     },
   ];

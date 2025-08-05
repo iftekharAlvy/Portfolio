@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { ChevronDown, Github, Linkedin, Mail } from 'lucide-react'
+import { ChevronDown, Github, Linkedin, Mail, Facebook } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 const HeroSection = () => {
@@ -31,7 +31,10 @@ const HeroSection = () => {
   }
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center hero-gradient overflow-hidden">
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center justify-center hero-gradient overflow-hidden"
+    >
       {/* Animated Background Particles */}
       <div className="particle-bg">
         {particles.map((particle) => (
@@ -50,7 +53,7 @@ const HeroSection = () => {
               duration: particle.duration,
               delay: particle.delay,
               repeat: Infinity,
-              ease: "easeInOut"
+              ease: 'easeInOut',
             }}
           />
         ))}
@@ -77,8 +80,13 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <p className="font-semibold">AI/ML Engineer • IoT Enthusiast • Entrepreneur</p>
-            <p className="text-lg">Building the future with intelligent automation and innovative brands</p>
+            <p className="font-semibold">
+              AI/ML Engineer • IoT Enthusiast • Entrepreneur
+            </p>
+            <p className="text-lg">
+              Building the future with intelligent automation and innovative
+              brands
+            </p>
           </motion.div>
 
           <motion.div
@@ -111,17 +119,17 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.8 }}
           >
             <motion.a
-              href="https://github.com"
+              href="https://www.facebook.com/alvy.mahmud"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.2, rotate: 5 }}
               whileTap={{ scale: 0.9 }}
               className="text-muted-foreground hover:text-primary transition-colors"
             >
-              <Github size={28} />
+              <Facebook size={28} />
             </motion.a>
             <motion.a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/iftekhar-mahmud-alvy-a88516276/"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.2, rotate: -5 }}
@@ -157,7 +165,7 @@ const HeroSection = () => {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
 
 export default HeroSection
